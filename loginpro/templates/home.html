@@ -1,0 +1,28 @@
+{% extends 'basic.html' %}
+
+{% block css %}
+    .welcome{
+        height : 80vh;
+        color : white;
+        display:flex;
+        flex-wrap:wrap;
+        flex-direction : columns;
+        justify-content :center;
+        align-content :center;
+        font-size:140%;
+    }
+
+{% endblock %}
+
+{% block content %}
+
+        <div class="welcome">
+            <div style="color: rgb(199, 164, 231);">
+                <div style="color: rgb(129, 102, 155); font-weight: bolder; display: flex ;justify-content: center;">Welcome to DBMS Project</div> 
+                <div style="color: white; font-weight: bolder;"><strong>Marks Management System</strong></div>
+                <div style="display:flex;justify-content: center;">By</div>
+                <span style="display:flex;justify-content: center;"
+                id="element"></span>
+            </div>
+        </div>
+{% endblock %}

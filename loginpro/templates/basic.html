@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-family: 'Poppins', sans-serif;
+            background: rgb(0, 0, 35);
+        }
+        nav{
+            background-color: rgb(0, 0, 18);
+            margin-top: 20px;
+            display: flex;
+            height: 4vw;
+            justify-content: space-around;
+            align-items: center;
+        }
+        nav div{
+            display: block;
+            margin: 0 20%;
+        }
+        .left p{
+            position: relative;
+            left: -110px;
+            color: white;
+        }
+        .right ul{
+            display: flex;
+            
+        }
+        .right ul li{
+            list-style: none;
+            margin: 0 10%;
+        }
+        .right ul li a{
+            text-decoration: none;
+            color: white;
+        }
+        .right ul li a:hover{
+            text-decoration: none;
+            color: grey;
+            font-size: larger;
+        }
+        .right >a{
+            text-decoration: none;
+            color: white;
+        }
+        .right > a:hover{
+            text-decoration: none;
+            color: grey;
+            font-size: larger;
+        }
+        #welcome{
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+        {% block css %}
+
+        {% endblock %}
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="left">
+            <p>Welcome</p>
+        </div>
+        <div class="right">
+           
+            {% if request.user.is_authenticated %}
+
+                {% if user.username == 'pratham' %} 
+                    <ul>
+                        <li><a href="{% url 'insert' %}">Insert</a></li>
+                        <li><a href="{% url 'display' %}">Display</a></li>
+                        <li><a href="{% url 'update' %}">Update</a></li>
+                        <li><a href="{% url 'delete' %}">Delete</a></li>
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                    </ul>
+                {% else %}
+                    <ul>
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                        <li><a href="{% url 'display' %}">Display</a></li>
+                    </ul>
+                {% endif %}
+            {% else %}
+                <ul>
+                    <li><a href="{% url 'login' %}">LogIn</a></li>
+                </ul>  
+            {% endif %}
+        </div>
+    </nav>
+     <h1 id="welcome">Welcome, {{request.user.username}} !</h1>
+
+    {% block content %}
+
+    {% endblock %}
+
+  
+
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+    <!-- Setup and start animation! -->
+    <script>
+      var typed = new Typed('#element', {
+        strings: [ 'Pratham Kubetkar','Shailesh Kaliya','Koustubh Kulkarni','Lokesh Kad'],
+        typeSpeed: 100,loop: true,
+      });
+    </script>
+</body>
+</html>
